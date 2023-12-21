@@ -13,3 +13,7 @@ function return_selected_from_array($selected, $array, $column) {
 
     return "";
 }
+
+function format_currency($currency) {
+    return str_replace('.', ',', $currency);
+}

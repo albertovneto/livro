@@ -27,7 +27,7 @@ class AssuntoRepository implements AssuntoRepositoryContract
     {
         $assunto = $this->model->find($id);
 
-        if ($assunto === false) {
+        if (empty($assunto)) {
             $this->throwNotFoundException($id);
         }
 
@@ -35,25 +35,29 @@ class AssuntoRepository implements AssuntoRepositoryContract
             'descricao' => $data['descricao'],
         ]);
 
-        return $assunto->refresh();
+        $assunto->refresh();
+
+        return true;
     }
 
     public function delete(int $id): bool
     {
         $assunto = $this->model->find($id);
 
-        if ($assunto === false) {
+        if (empty($assunto)) {
             $this->throwNotFoundException($id);
         }
 
         return $assunto->delete();
     }
 
-    public function insert($data): bool
+    public function insert(array $data): bool
     {
-        return $this->model->create([
+        $this->model->create([
             'descricao' => $data['descricao'],
         ]);
+
+        return true;
     }
 
     protected function throwNotFoundException(int $id)

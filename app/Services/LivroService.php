@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\Contracts\LivroRepositoryContract;
 use App\Services\Contracts\LivroServiceContract;
+use Brick\Money\Money;
 
 class LivroService implements LivroServiceContract
 {
@@ -24,16 +25,25 @@ class LivroService implements LivroServiceContract
 
     public function insert(array $data): bool
     {
+        $data['preco'] = $this->currencyFormat($data['preco']);
         return $this->livroRepository->insert($data);
     }
 
     public function update(int $id, array $data): bool
     {
-        return true;
+        $data['preco'] = $this->currencyFormat($data['preco']);
+        return $this->livroRepository->update($id, $data);
     }
 
     public function delete(int $id): bool
     {
-        return true;
+        return $this->livroRepository->delete($id);
+    }
+
+    private function currencyFormat($currency): float
+    {
+        $currency = str_replace('.', '', $currency);
+        $currency = str_replace(',', '.', $currency);
+        return (float) str_replace('R$ ', '', $currency);
     }
 }

@@ -5,12 +5,14 @@ namespace App\Providers;
 use App\Services\Contracts\{
     AssuntoServiceContract,
     AutorServiceContract,
-    LivroServiceContract
+    LivroServiceContract,
+    Reports\AutorReportServiceContract
 };
 use App\Services\{
     AssuntoService,
     AutorService,
-    LivroService
+    LivroService,
+    Reports\AutorReportService
 };
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -31,6 +33,11 @@ class ServiceServiceProvider extends ServiceProvider
         $this->app->bind(
             AutorServiceContract::class,
             AutorService::class
+        );
+
+        $this->app->bind(
+            AutorReportServiceContract::class,
+            AutorReportService::class
         );
     }
 

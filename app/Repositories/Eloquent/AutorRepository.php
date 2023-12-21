@@ -27,7 +27,7 @@ class AutorRepository implements AutorRepositoryContract
     {
         $autor = $this->model->find($id);
 
-        if ($autor === false) {
+        if (empty($autor)) {
             $this->throwNotFoundException($id);
         }
 
@@ -35,25 +35,29 @@ class AutorRepository implements AutorRepositoryContract
             'nome' => $data['nome'],
         ]);
 
-        return $autor->refresh();
+        $autor->refresh();
+
+        return true;
     }
 
     public function delete(int $id): bool
     {
         $autor = $this->model->find($id);
 
-        if ($autor === false) {
+        if (empty($autor)) {
             $this->throwNotFoundException($id);
         }
 
         return $autor->delete();
     }
 
-    public function insert($data): bool
+    public function insert(array $data): bool
     {
-        return $this->model->create([
+        $this->model->create([
             'nome' => $data['nome'],
         ]);
+
+        return true;
     }
 
     protected function throwNotFoundException(int $id)

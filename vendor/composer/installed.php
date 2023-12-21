@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'test/livro',
-        'pretty_version' => '10.x-dev',
-        'version' => '10.9999999.9999999.9999999-dev',
-        'reference' => '07fdfbc8d8d88440634bd1c42075653dbb5df402',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => NULL,
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -16,6 +16,15 @@
             'reference' => '0ad82ce168c82ba30d1c01ec86116ab52f589478',
             'type' => 'library',
             'install_path' => __DIR__ . '/../brick/math',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'brick/money' => array(
+            'pretty_version' => '0.8.1',
+            'version' => '0.8.1.0',
+            'reference' => '25f484a347756b7f3fbe7ad63ed9ad2d87b20004',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../brick/money',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -748,8 +757,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '3.0.0',
+                0 => '3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -1254,9 +1263,9 @@
             'dev_requirement' => true,
         ),
         'test/livro' => array(
-            'pretty_version' => '10.x-dev',
-            'version' => '10.9999999.9999999.9999999-dev',
-            'reference' => '07fdfbc8d8d88440634bd1c42075653dbb5df402',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => NULL,
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -17,6 +17,11 @@ class AutorService implements AutorServiceContract
         return $this->autorRepository->get();
     }
 
+    public function listById(int $id): ?array
+    {
+        return $this->autorRepository->getById($id);
+    }
+
     public function insert(array $data): bool
     {
         return $this->autorRepository->insert($data);

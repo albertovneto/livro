@@ -27,7 +27,7 @@ class LivroRepository implements LivroRepositoryContract
     {
         $livro = $this->model->find($id);
 
-        if ($livro === false) {
+        if (empty($livro)) {
             $this->throwNotFoundException($id);
         }
 
@@ -50,14 +50,17 @@ class LivroRepository implements LivroRepositoryContract
     {
         $livro = $this->model->find($id);
 
-        if ($livro === false) {
+        if (empty($livro)) {
             $this->throwNotFoundException($id);
         }
+
+        $livro->livroAssunto()->detach();
+        $livro->livroAutor()->detach();
 
         return $livro->delete();
     }
 
-    public function insert($data): bool
+    public function insert(array $data): bool
     {
         $livro = $this->model->create([
             'titulo' => $data['titulo'],

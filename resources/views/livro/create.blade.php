@@ -6,6 +6,11 @@
     <div class="title-crud">
         <h2>Inserir Livros</h2>
     </div>
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="row">
         <form action="{{url('livro')}}" method="post">
             @csrf
@@ -51,7 +56,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary create">Submit</button>
             </div>
         </form>
     </div>

@@ -6,6 +6,7 @@ use App\Exceptions\NotFoundException;
 use App\Services\Contracts\AssuntoServiceContract;
 use App\Services\Contracts\AutorServiceContract;
 use App\Services\Contracts\LivroServiceContract;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Throwable;
@@ -21,10 +22,8 @@ class LivroController extends Controller
 
     public function list(Request $request)
     {
-        $livros = $this->livroService->list();
-
         return view('livro/list',
-            ['livros' => $livros]
+            ['livros' => $this->livroService->list()]
         );
     }
 
@@ -48,10 +47,24 @@ class LivroController extends Controller
 
     public function delete(Request $request)
     {
+        try {
+            $this->livroService->delete($request->id);
 
+            $message = 'Livro deletado com sucesso';
+            $typeMessage = 'success';
+        } catch (NotFoundException $notFoundException) {
+            $message = $notFoundException->getMessage();
+            $typeMessage = 'error';
+        }  catch (Throwable $throwable) {
+            $message = $throwable->getMessage();
+            $typeMessage = 'error';
+        }
+
+        return redirect('livro')
+            ->with($typeMessage, $message);
     }
 
-    public function insert(Request $request)
+    public function insert(Request $request): RedirectResponse
     {
         try {
             $request->validate([
@@ -66,23 +79,44 @@ class LivroController extends Controller
 
             $this->livroService->insert($request->toArray());
 
-            $typeMessage = 'success';
-            $message = 'Livro criado com sucesso';
+            return redirect('livro')
+                ->with('success', 'Livro criado com sucesso');
         } catch (ValidationException $validationException) {
-            $typeMessage = 'error';
-            $message = $validationException->getMessage();
-        } catch (Throwable $notFoundException) {
-            $typeMessage = 'error';
-            $message = $notFoundException->getMessage();
+            return redirect('livro/criar')
+                ->with('error', $validationException->getMessage());
+        } catch (Throwable $throwable) {
+            return redirect('livro/criar')
+                ->with('error', $throwable->getMessage());
         }
-
-        return redirect()->route('livro')
-            ->with($typeMessage, $message);
     }
 
-    public function update(Request $request)
+    public function update(Request $request): RedirectResponse
     {
-        return redirect()->route('livro')
-            ->with('success', 'Livro editado com sucesso.');
+        try {
+            $request->validate([
+                'titulo' => 'required|max:40',
+                'editora' => 'required|max:40',
+                'edicao' => 'required',
+                'ano_publicacao' => 'required|max:4',
+                'preco' => 'required',
+                'assunto' => 'required',
+                'autor' => 'required'
+            ]);
+
+            $this->livroService->update($request->id, $request->toArray());
+
+            return redirect('livro')
+                ->with('success', 'Livro alterado com sucesso');
+
+        } catch (ValidationException $validationException) {
+            $errorMessage = $validationException->getMessage();
+        } catch (NotFoundException $notFoundException) {
+            $errorMessage = $notFoundException->getMessage();
+        } catch (Throwable $throwable) {
+            $errorMessage = $throwable->getMessage();
+        }
+
+        return redirect("livro/{$request->id}/editar")
+            ->with('error', $errorMessage);
     }
 }

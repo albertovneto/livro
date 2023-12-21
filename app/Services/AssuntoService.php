@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Repositories\Contracts\AssuntoRepositoryContract;
-use App\Repositories\Contracts\LivroRepositoryContract;
 use App\Services\Contracts\AssuntoServiceContract;
 
 class AssuntoService implements AssuntoServiceContract
@@ -16,6 +15,11 @@ class AssuntoService implements AssuntoServiceContract
     public function list(): ?array
     {
         return $this->assuntoRepository->get();
+    }
+
+    public function listById(int $id): ?array
+    {
+        return $this->assuntoRepository->getById($id);
     }
 
     public function insert(array $data): bool

@@ -4,11 +4,13 @@ namespace App\Providers;
 
 use App\Repositories\Contracts\{
     AssuntoRepositoryContract,
+    AutorLivroAssuntoRepositoryContract,
     AutorRepositoryContract,
     LivroRepositoryContract
 };
 use App\Repositories\Eloquent\{
     AssuntoRepository,
+    AutorLivroAssuntoRepository,
     AutorRepository,
     LivroRepository
 };
@@ -31,6 +33,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(
             AutorRepositoryContract::class,
             AutorRepository::class
+        );
+
+        $this->app->bind(
+            AutorLivroAssuntoRepositoryContract::class,
+            AutorLivroAssuntoRepository::class
         );
     }
 

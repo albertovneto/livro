@@ -1,11 +1,18 @@
 @extends('layouts.default')
 
-@section('title', 'Livros - Inserir')
+@section('title', 'Livros - Editar')
 
 @section('content')
+
     <div class="title-crud">
-        <h2>Editar Livro - {{$livro['titulo']}}</h2>
+        <h2>Editar Livro - {{ $livro['titulo'] ?? null }}</h2>
     </div>
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <div class="row">
         <form action=" {{url("livro/{$livro['id']}") }}" method="post">
             @csrf
@@ -28,7 +35,7 @@
             </div>
             <div class="form-group">
                 <label for="form-preco">Preço:</label>
-                <input type="text" class="form-control" id="form-preco" name="preco" value="{{ $livro['preco'] }}">
+                <input type="text" class="form-control" id="form-preco" name="preco" value="{{ @\App\format_currency($livro['preco']) }}">
             </div>
             <div class="form-group">
                 <label for="form-autor">Autores:</label>
@@ -59,8 +66,9 @@
                 </select>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary create">Submit</button>
             </div>
         </form>
     </div>
 @endsection
+

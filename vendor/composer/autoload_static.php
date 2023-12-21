@@ -172,6 +172,7 @@ class ComposerStaticInitb069b61d76c993ffe98879b2db806e18
         ),
         'B' => 
         array (
+            'Brick\\Money\\' => 12,
             'Brick\\Math\\' => 11,
         ),
         'A' => 
@@ -518,6 +519,10 @@ class ComposerStaticInitb069b61d76c993ffe98879b2db806e18
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
+        'Brick\\Money\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/brick/money/src',
+        ),
         'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
@@ -586,6 +591,31 @@ class ComposerStaticInitb069b61d76c993ffe98879b2db806e18
         'Brick\\Math\\Internal\\Calculator\\GmpCalculator' => __DIR__ . '/..' . '/brick/math/src/Internal/Calculator/GmpCalculator.php',
         'Brick\\Math\\Internal\\Calculator\\NativeCalculator' => __DIR__ . '/..' . '/brick/math/src/Internal/Calculator/NativeCalculator.php',
         'Brick\\Math\\RoundingMode' => __DIR__ . '/..' . '/brick/math/src/RoundingMode.php',
+        'Brick\\Money\\AbstractMoney' => __DIR__ . '/..' . '/brick/money/src/AbstractMoney.php',
+        'Brick\\Money\\Context' => __DIR__ . '/..' . '/brick/money/src/Context.php',
+        'Brick\\Money\\Context\\AutoContext' => __DIR__ . '/..' . '/brick/money/src/Context/AutoContext.php',
+        'Brick\\Money\\Context\\CashContext' => __DIR__ . '/..' . '/brick/money/src/Context/CashContext.php',
+        'Brick\\Money\\Context\\CustomContext' => __DIR__ . '/..' . '/brick/money/src/Context/CustomContext.php',
+        'Brick\\Money\\Context\\DefaultContext' => __DIR__ . '/..' . '/brick/money/src/Context/DefaultContext.php',
+        'Brick\\Money\\Currency' => __DIR__ . '/..' . '/brick/money/src/Currency.php',
+        'Brick\\Money\\CurrencyConverter' => __DIR__ . '/..' . '/brick/money/src/CurrencyConverter.php',
+        'Brick\\Money\\Exception\\CurrencyConversionException' => __DIR__ . '/..' . '/brick/money/src/Exception/CurrencyConversionException.php',
+        'Brick\\Money\\Exception\\MoneyException' => __DIR__ . '/..' . '/brick/money/src/Exception/MoneyException.php',
+        'Brick\\Money\\Exception\\MoneyMismatchException' => __DIR__ . '/..' . '/brick/money/src/Exception/MoneyMismatchException.php',
+        'Brick\\Money\\Exception\\UnknownCurrencyException' => __DIR__ . '/..' . '/brick/money/src/Exception/UnknownCurrencyException.php',
+        'Brick\\Money\\ExchangeRateProvider' => __DIR__ . '/..' . '/brick/money/src/ExchangeRateProvider.php',
+        'Brick\\Money\\ExchangeRateProvider\\BaseCurrencyProvider' => __DIR__ . '/..' . '/brick/money/src/ExchangeRateProvider/BaseCurrencyProvider.php',
+        'Brick\\Money\\ExchangeRateProvider\\CachedProvider' => __DIR__ . '/..' . '/brick/money/src/ExchangeRateProvider/CachedProvider.php',
+        'Brick\\Money\\ExchangeRateProvider\\ConfigurableProvider' => __DIR__ . '/..' . '/brick/money/src/ExchangeRateProvider/ConfigurableProvider.php',
+        'Brick\\Money\\ExchangeRateProvider\\PDOProvider' => __DIR__ . '/..' . '/brick/money/src/ExchangeRateProvider/PDOProvider.php',
+        'Brick\\Money\\ExchangeRateProvider\\PDOProviderConfiguration' => __DIR__ . '/..' . '/brick/money/src/ExchangeRateProvider/PDOProviderConfiguration.php',
+        'Brick\\Money\\ExchangeRateProvider\\ProviderChain' => __DIR__ . '/..' . '/brick/money/src/ExchangeRateProvider/ProviderChain.php',
+        'Brick\\Money\\ISOCurrencyProvider' => __DIR__ . '/..' . '/brick/money/src/ISOCurrencyProvider.php',
+        'Brick\\Money\\Money' => __DIR__ . '/..' . '/brick/money/src/Money.php',
+        'Brick\\Money\\MoneyBag' => __DIR__ . '/..' . '/brick/money/src/MoneyBag.php',
+        'Brick\\Money\\MoneyComparator' => __DIR__ . '/..' . '/brick/money/src/MoneyComparator.php',
+        'Brick\\Money\\MoneyContainer' => __DIR__ . '/..' . '/brick/money/src/MoneyContainer.php',
+        'Brick\\Money\\RationalMoney' => __DIR__ . '/..' . '/brick/money/src/RationalMoney.php',
         'Carbon\\AbstractTranslator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/AbstractTranslator.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonConverterInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonConverterInterface.php',

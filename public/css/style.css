@@ -1,6 +1,22 @@
 
-.btn {
+.create {
     background: #2F64E0;
+}
+
+.list-create {
+    border-color: #2F64E0;
+    background: none;
+    color: #2F64E0;
+    margin-top: 10px;
+    float: right;
+}
+
+.list-create:hover {
+    border-color: #2F64E0;
+    background: none;
+    color: #2F64E0;
+    margin-top: 10px;
+    float: right;
 }
 
 .form-group {

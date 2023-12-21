@@ -3,9 +3,21 @@
 @section('title', 'Livros')
 
 @section('content')
-    <div class="title-crud">
-        <h2>Livros</h2>
+    <div class="title-crud row">
+        <div class="col-9">
+            <h2>Livros</h2>
+        </div>
+        <div class="col-3">
+            <a href="{{ url("livro/criar") }}">
+                <div class="btn list-create">Novo Livro</div>
+            </a>
+        </div>
     </div>
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="row">
         <div class="table-responsive">
             <table class="table">
@@ -33,12 +45,12 @@
                                 <td>{{ $livro['editora'] }}</td>
                                 <td>{{ $livro['edicao'] }}</td>
                                 <td>{{ $livro['ano_publicacao'] }}</td>
-                                <td>{{ $livro['preco'] }}</td>
+                                <td>R$ {{ @\App\format_currency($livro['preco']) }}</td>
                                 <td>{{ @\App\implode_column_from_array($livro['livro_autor'], 'nome') }}</td>
                                 <td>{{ @\App\implode_column_from_array($livro['livro_assunto'], 'descricao') }}</td>
                                 <td><a href="{{ url("livro/{$livro['id']}/editar") }}">Editar</a></td>
                                 <td>
-                                    <form action="{{ url("livro/{{$livro['id']}") }}" method="post">
+                                    <form action="{{ url("livro/{$livro['id']}") }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
