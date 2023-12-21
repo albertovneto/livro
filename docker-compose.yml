@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+    api:
+        build: .docker/dev
+        container_name: livros-api
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+            - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+        networks:
+            - livros-network
+
+    nginx:
+        build: .docker/dev/nginx
+        container_name: livros-nginx
+        restart: always
+        tty: true
+        ports:
+            - "8000:80"
+        volumes:
+            - .:/var/www
+        networks:
+            - livros-network
+        depends_on:
+            - api
+
+    mysql:
+        build: .docker/dev/mysql
+        container_name: livros-mysql
+        restart: always
+        tty: true
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./.docker/dev/dbdata:/var/lib/mysql
+            - ./.docker/dev/mysql:/docker-entrypoint-initdb.d
+        environment:
+            - MYSQL_DATABASE=livros
+            - MYSQL_ROOT_PASSWORD=root
+        networks:
+            - livros-network
+
+networks:
+    livros-network:
+        driver: bridge

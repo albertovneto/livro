@@ -1,0 +1,46 @@
+
+.btn {
+    background: #2F64E0;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    font-size: 14px;
+}
+
+header {
+    background: rgba(59, 130, 246, 0.5);
+    margin-bottom: 10px;
+}
+header .nav-link, header .nav-link:hover{
+    color: #FFFFFF;
+}
+
+header .nav-right {
+    float: right;
+}
+
+header .nav-right li:last-child a{
+    padding-right: 0;
+}
+
+header .nav-left li:first-child a{
+    padding-left: 0;
+}
+
+.main-body {
+    background: rgba(47, 100, 224, 0.16);
+}
+
+.title-dashboard {
+    margin-bottom: 10px;
+}
+
+.title-crud h2 {
+    font-size: 24px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

@@ -1,0 +1,12 @@
+<?php
+
+namespace App\Services\Contracts;
+
+interface LivroServiceContract
+{
+    public function list(): ?array;
+    public function listById(int $id): ?array;
+    public function update(int $id, array $data): bool;
+    public function insert(array $data): bool;
+    public function delete(int $id): bool;
+}
