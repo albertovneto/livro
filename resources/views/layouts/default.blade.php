@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('autor') }}">Autores</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('reports/autor') }}">Relatório</a>
+                    </li>
                 </ul>
             </div>
         </div>

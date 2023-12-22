@@ -18,7 +18,7 @@ return new class extends Migration
                 autor.id AS autor_id,
                 autor.nome AS autor_nome,
                 GROUP_CONCAT(DISTINCT livro.id) AS livros_ids,
-                COUNT(livro.id) AS total_livros,
+                COUNT(DISTINCT livro.id) AS total_livros,
                 GROUP_CONCAT(DISTINCT livro.titulo) AS titulos_livros,
                 GROUP_CONCAT(DISTINCT assunto.id) AS assuntos_ids,
                 GROUP_CONCAT(DISTINCT assunto.descricao) AS descricoes_assuntos

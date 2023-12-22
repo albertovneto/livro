@@ -51,4 +51,5 @@ Route::controller(AutorController::class)->group(function () {
 
 Route::controller(AutorReportController::class)->group(function () {
     Route::get('reports/autor', 'autores');
+    Route::get('reports/autor/generateXlsx', 'generateXlsx');
 });

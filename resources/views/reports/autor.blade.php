@@ -7,6 +7,11 @@
         <div class="col-9">
             <h2>Relatório</h2>
         </div>
+        <div class="col-3">
+            <a href="{{ url("reports/autor/generateXlsx") }}">
+                <div class="btn list-create">Download XLSX</div>
+            </a>
+        </div>
     </div>
     <div class="row">
         <div class="col-12">

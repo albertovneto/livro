@@ -6,13 +6,15 @@ use App\Services\Contracts\{
     AssuntoServiceContract,
     AutorServiceContract,
     LivroServiceContract,
-    Reports\AutorReportServiceContract
+    Reports\AutorReportServiceContract,
+    Reports\XlsxReportServiceContract
 };
 use App\Services\{
     AssuntoService,
     AutorService,
     LivroService,
-    Reports\AutorReportService
+    Reports\AutorReportService,
+    Reports\XlsxReportService
 };
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -38,6 +40,11 @@ class ServiceServiceProvider extends ServiceProvider
         $this->app->bind(
             AutorReportServiceContract::class,
             AutorReportService::class
+        );
+
+        $this->app->bind(
+            XlsxReportServiceContract::class,
+            XlsxReportService::class
         );
     }
 
