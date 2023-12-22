@@ -40,7 +40,7 @@ class LivroService implements LivroServiceContract
         return $this->livroRepository->delete($id);
     }
 
-    private function currencyFormat($currency): float
+    protected function currencyFormat($currency): float
     {
         $currency = str_replace('.', '', $currency);
         $currency = str_replace(',', '.', $currency);
