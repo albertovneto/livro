@@ -16,7 +16,7 @@ class LivroServiceTest extends TestCase
             'editora' => 'Editora Teste',
             'edicao' => '1',
             'ano_publicacao' => 2018,
-            'preco' => 25,
+            'preco' => 25.00,
         ];
 
         $repositoryMock = Mockery::mock(LivroRepository::class, LivroRepositoryContract::class);
